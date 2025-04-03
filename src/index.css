@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-fade-in-down {
+    animation: fadeInDown 0.5s ease-out;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.react-calendar.dark-calendar {
+  background-color: #1f2937;
+  color: #ffffff;
+  border: none;
+}
+.react-calendar.dark-calendar .react-calendar__navigation button {
+  color: #ffffff;
+  background: #374151;
+}
+.react-calendar.dark-calendar .react-calendar__tile {
+  background: #374151;
+  color: #ffffff;
+}
+.react-calendar.dark-calendar .react-calendar__tile--active {
+  background: #3b82f6;
+  color: #ffffff;
+}
+.react-calendar.dark-calendar .react-calendar__tile--now {
+  background: #60a5fa;
+  color: #ffffff;
+}
+.react-calendar.dark-calendar .react-calendar__tile:hover {
+  background: #4b5563;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(2);
+}
