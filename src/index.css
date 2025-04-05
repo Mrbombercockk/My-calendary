@@ -2,50 +2,196 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .animate-fade-in-down {
-    animation: fadeInDown 0.5s ease-out;
-  }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Estilos mejorados para tema blanco y negro */
+.bg-gray-900 {
+  background-color: #1a1a1a; /* Negro más elegante */
 }
 
-.react-calendar.dark-calendar {
-  background-color: #1f2937;
+.bg-gray-800 {
+  background-color: #2d2d2d;
+}
+
+.bg-gray-700 {
+  background-color: #3f3f3f;
+}
+
+.bg-gray-200 {
+  background-color: #f5f5f5; /* Blanco W más suave */
+}
+
+.bg-gray-100 {
+  background-color: #fafafa;
+}
+
+.text-white {
   color: #ffffff;
+}
+
+.text-black {
+  color: #000000;
+}
+
+.border-gray-700 {
+  border-color: #3f3f3f;
+}
+
+.border-gray-300 {
+  border-color: #d1d1d1;
+}
+
+/* Estilos del Calendario */
+.react-calendar {
+  width: 100%;
+  border: none !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+  background: transparent;
+}
+
+/* Modo Claro */
+.react-calendar--light {
+  background-color: #ffffff !important; /* Fondo blanco puro */
+  color: #000000 !important; /* Texto negro */
+}
+
+/* Modo Oscuro */
+.react-calendar--dark {
+  background-color: #1a1a1a !important; /* Fondo negro elegante */
+  color: #ffffff !important; /* Texto blanco */
+}
+
+/* Botones de Navegación */
+.react-calendar__navigation {
+  display: flex;
+  margin-bottom: 1em;
+  background: none;
+}
+
+.react-calendar__navigation button {
+  background: none;
   border: none;
-}
-.react-calendar.dark-calendar .react-calendar__navigation button {
-  color: #ffffff;
-  background: #374151;
-}
-.react-calendar.dark-calendar .react-calendar__tile {
-  background: #374151;
-  color: #ffffff;
-}
-.react-calendar.dark-calendar .react-calendar__tile--active {
-  background: #3b82f6;
-  color: #ffffff;
-}
-.react-calendar.dark-calendar .react-calendar__tile--now {
-  background: #60a5fa;
-  color: #ffffff;
-}
-.react-calendar.dark-calendar .react-calendar__tile:hover {
-  background: #4b5563;
+  font-size: 1.2em;
+  padding: 0.5em;
+  cursor: pointer;
+  color: inherit !important; /* Hereda el color del modo */
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator,
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  filter: invert(1) brightness(2);
+.react-calendar__navigation button:hover {
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 8px;
+}
+
+/* Días de la Semana */
+.react-calendar__month-view__weekdays {
+  font-size: 0.9em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.react-calendar--light .react-calendar__month-view__weekdays {
+  color: #666666 !important; /* Gris oscuro en modo claro */
+}
+
+.react-calendar--dark .react-calendar__month-view__weekdays {
+  color: #aaaaaa !important; /* Gris claro en modo oscuro */
+}
+
+/* Días */
+.react-calendar__month-view__days {
+  background: transparent;
+}
+
+.react-calendar__tile {
+  position: relative;
+  padding: 1em 0;
+  background: none;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 8px;
+  color: inherit !important; /* Hereda el color del modo */
+}
+
+.react-calendar__tile:hover {
+  background: rgba(128, 128, 128, 0.2);
+}
+
+/* Día Actual */
+.react-calendar__tile--now {
+  background: rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+.react-calendar--dark .react-calendar__tile--now {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Día Seleccionado */
+.react-calendar__tile--active {
+  background: #000000 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.react-calendar--dark .react-calendar__tile--active {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Días del Fin de Semana */
+.react-calendar__month-view__days__day--weekend {
+  color: #ff6666 !important; /* Rojo suave en modo claro */
+}
+
+.react-calendar--dark .react-calendar__month-view__days__day--weekend {
+  color: #ff9999 !important; /* Rojo más claro en modo oscuro */
+}
+
+/* Días de Otros Meses */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #888888 !important; /* Gris en modo claro */
+}
+
+.react-calendar--dark .react-calendar__month-view__days__day--neighboringMonth {
+  color: #666666 !important; /* Gris más oscuro en modo oscuro */
+}
+
+/* Indicadores Numéricos */
+.react-calendar__tile .tile-indicators {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+  font-size: 0.65em;
+  line-height: 1;
+}
+
+.react-calendar__tile .tile-indicators span {
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.react-calendar__tile .tile-indicators .pending {
+  background-color: #ff4d4d; /* Fondo rojo para pendientes */
+  color: #ffffff !important; /* Texto blanco */
+}
+
+.react-calendar__tile .tile-indicators .completed {
+  background-color: #4caf50; /* Fondo verde para completados */
+  color: #ffffff !important; /* Texto blanco */
 }
